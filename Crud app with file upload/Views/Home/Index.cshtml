@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Crud_app_with_file_upload.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employee Data</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table text-center">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Designation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Img_path)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="vertical-align: middle; text-align: center">
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td style="vertical-align: middle; text-align: center">
+            @Html.DisplayFor(modelItem => item.Designation)
+        </td>
+        <td style="vertical-align: middle;">
+            <img src="@Url.Content(item.Img_path)" height="80" width="80"/>
+        </td>
+        <td style="vertical-align: middle; text-align: center">
+            @Html.ActionLink("Edit", "Edit", null, new { id=item.Id, @class = "btn btn-outline-dark"})
+            @Html.ActionLink("Details", "Details", null, new { id=item.Id, @class = "btn btn-outline-dark" })
+            @Html.ActionLink("Delete", "Delete", null, new { id=item.Id, @class = "btn btn-outline-dark" })
+        </td>
+    </tr>
+}
+
+</table>
